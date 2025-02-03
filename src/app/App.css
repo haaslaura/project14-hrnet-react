@@ -21,3 +21,51 @@ h1 {
   align-items: center;
   justify-content: center;
 }
+
+/* FONT */
+
+h1, h2, h3, h4, h5, p, a, ul, li, form, input, fieldset, select, option, button {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  letter-spacing: 0.01071em;
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+}
+
+h5, p, a, ul, li, form, input, fieldset, select, option, button {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 2;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 2;
+}
+
+h3, h4, h5, p, a, ul, li, form, input, fieldset, select, option, button {
+  font-size: 0.875rem;
+  line-height: 1.43;
+}
+
+/* ELEMENTS */
+
+button {
+  margin-top: 1rem;
+}
+
+/* MODAL */
+
+.modal {
+  border-radius: 15px;
+}
+
+::backdrop {
+  background: darkblue;
+  opacity: 0.75;
+}

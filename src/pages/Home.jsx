@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import CreateEmployeeForm from "../components/CreateEmployeeForm"
+import CreateEmployeeForm from "../features/employees/CreateEmployeeForm"
 
 const Home = () => {
      return (
