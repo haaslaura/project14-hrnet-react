@@ -16,25 +16,6 @@ import './dialog.css'
 const Dialog = forwardRef(({ toogleDialog }, ref ) => {
 
     return (
-        // <dialog
-        //     id="confirmation"
-        //     className="modal"
-        //     ref={ref}
-        //     onClick={(e) => {
-        //         if(e.currentTarget === e.target) {
-        //             toogleDialog()
-        //         }
-        //     }}
-        // >
-        //     <div className="modal-content">
-        //         <button type="button" className="modal-close-button" onClick={toogleDialog} aria-label="Close">
-        //             <span>Close</span>
-        //         </button>
-        //         <ModalContent />
-        //     </div>
-        // </dialog>
-
-
             <dialog
                 id="confirmation"
                 className="modal"
@@ -48,15 +29,8 @@ const Dialog = forwardRef(({ toogleDialog }, ref ) => {
                 <button type="button" className="modal-close-button" onClick={toogleDialog} aria-label="Close">
                     <span>Close</span>
                 </button>
-
-                {/* <div className="modal-content"> */}
-                    <ModalContent />
-                {/* </div> */}
-
-                
-
+                <ModalContent />
             </dialog>
-
     )
 })
 

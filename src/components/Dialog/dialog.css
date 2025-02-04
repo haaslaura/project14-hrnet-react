@@ -14,9 +14,10 @@
     opacity: 0.6;
 }
 
-.modal-content { /* div inside the modal*/
+.modal-content { /* text inside the modal*/
     padding: 15px 30px;
     position: relative;
+    z-index: 98;
 }
 
 .modal-close-button {
@@ -30,6 +31,7 @@
     border: none;
     border-radius: 50%;
     cursor: pointer;
+    z-index: 99;
 }
 
 .modal-close-button:hover {
