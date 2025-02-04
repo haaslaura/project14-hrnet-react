@@ -11,29 +11,8 @@ import { useSelector } from 'react-redux';
 
 const CurrentEmployeesArray = () => {
 
-    const firstName = useSelector((state) => state.employee.firstName)
-    const lastName = useSelector((state) => state.employee.lastName)
-    const startDate = useSelector((state) => state.employee.startDate)
-    const department = useSelector((state) => state.employee.department)
-    const dateOfBirth = useSelector((state) => state.employee.dateOfBirth)
-    const street = useSelector((state) => state.employee.street)
-    const city = useSelector((state) => state.employee.city)
-    const livedInState = useSelector((state) => state.employee.livedInState)
-    const zipCode = useSelector((state) => state.employee.zipCode)
-
-    const dataRequired = [
-        firstName,
-        lastName,
-        startDate,
-        department,
-        dateOfBirth,
-        street,
-        city,
-        livedInState,
-        zipCode
-    ]
-
-    console.log(dataRequired);    
+    const employees = useSelector((state) => state.employees.employees); // Récupère les employés depuis le store
+    console.log(employees);    
 
     function createData(name, calories, fat, carbs, protein) {
         return { name, calories, fat, carbs, protein };

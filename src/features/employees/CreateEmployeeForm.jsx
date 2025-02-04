@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { states } from "../../data/states";
 import { setEmployee } from "./employeesSlice";
 import Dialog from "../../components/Dialog/Dialog";
+import { v4 as uuidv4 } from "uuid"; // for create an employee unique ID
 
 
 /**
@@ -13,8 +14,7 @@ import Dialog from "../../components/Dialog/Dialog";
 const CreateEmployeeForm = () => {   
 
     const dispatch = useDispatch()
-    const dialogRef = useRef(null)
-
+    
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [startDate, setStartDate] = useState('')
@@ -24,12 +24,12 @@ const CreateEmployeeForm = () => {
     const [city, setCity] = useState('')
     const [liveInState, setLiveInState] = useState('Alabama')
     const [zipCode, setZipCode] = useState('')
-
     const [error, setError] = useState(null)
     
     /**
      * Toogles the dialog modal open or closed
      */
+    const dialogRef = useRef(null)
     const toogleDialog = () => {
         if(!dialogRef.current) {
             return
@@ -57,14 +57,15 @@ const CreateEmployeeForm = () => {
      */
     const saveEmployee = (e) => {
         e.preventDefault()
-        
+
         const sanitizedFirstName = validateTextInput(firstName)
         const sanitizedLastName = validateTextInput(lastName)
         const sanitizedStreet = validateTextInput(street)
         const sanitizedCity = validateTextInput(city)
         const sanitizedZipCode = validateTextInput(zipCode)       
     
-        const requiredFields = [
+        const newEmployee = {
+            id: uuidv4(), // Generates a unique ID
             sanitizedFirstName,
             sanitizedLastName,
             startDate,
@@ -74,26 +75,16 @@ const CreateEmployeeForm = () => {
             sanitizedCity,
             liveInState,
             sanitizedZipCode
-        ]
+        }
+
+        console.log(newEmployee);
         
-        const validatedForm = requiredFields.every(field => field.trim().length !== 0)
+        const validatedForm = Object.values(newEmployee).every(field => field.trim().length !== 0)
 
         if (validatedForm) {            
             setError(null)
-            
             // sending data to the store
-            dispatch(setEmployee({
-                firstName : sanitizedFirstName,
-                lastName : sanitizedLastName,
-                startDate,
-                department,
-                dateOfBirth,
-                street : sanitizedStreet,
-                city : sanitizedCity,
-                livedInState : liveInState,
-                zipCode : sanitizedZipCode
-            }))
-
+            dispatch(setEmployee(newEmployee));
             toogleDialog()
 
         } else {
