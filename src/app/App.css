@@ -1,27 +1,3 @@
-label {
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 10px;
-}
-
-.address {
-  margin-top: 10px;
-}
-
-/* Corrections: */
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* FONT */
 
 h1, h2, h3, h4, h5, p, a, ul, li, form, input, fieldset, select, option, button {
@@ -55,29 +31,23 @@ h3, h4, h5, p, a, ul, li, form, input, fieldset, select, option, button {
 
 /* ELEMENTS */
 
-button {
+.save-button {
   margin-top: 1rem;
 }
 
-/* MODAL */
-
-.modal {
-  border-radius: 8px;
-  border: 0px;
-  box-shadow: 0 0 10px #000;
-  text-align: left;
-  /* padding: 15px 30px; */
-  padding: 0;
-  background: #fff;
-  width: 90%;
-  max-width: 500px;
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
 }
 
-.modal-content {
-  padding: 15px;
+.address {
+  margin-top: 10px;
 }
 
-::backdrop {
-  background: #000;
-  opacity: 0.8;
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

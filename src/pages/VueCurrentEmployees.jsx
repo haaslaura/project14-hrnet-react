@@ -5,6 +5,10 @@ const VueCurrentEmployees = () => {
     return (
        <section>
            <h1>Current Employees</h1>
+           <div>
+            <div>Show entries</div>
+            <div>Search:</div>
+           </div>
            <CurrentEmployeesArray />
            <Link to="/">Home</Link>
        </section>

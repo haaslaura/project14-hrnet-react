@@ -2,10 +2,18 @@ import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { states } from "../../data/states";
 import { setEmployee } from "./employeesSlice";
+import Dialog from "../../components/Dialog/Dialog";
 
+
+/**
+ * Component for creating a new employee form.
+ * Manages form state, validation, and submission to the Redux store.
+ * @returns {JSX.Element} - The form for created a new employee
+ */
 const CreateEmployeeForm = () => {   
 
     const dispatch = useDispatch()
+    const dialogRef = useRef(null)
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -18,9 +26,10 @@ const CreateEmployeeForm = () => {
     const [zipCode, setZipCode] = useState('')
 
     const [error, setError] = useState(null)
-
-
-    const dialogRef = useRef(null)
+    
+    /**
+     * Toogles the dialog modal open or closed
+     */
     const toogleDialog = () => {
         if(!dialogRef.current) {
             return
@@ -42,6 +51,10 @@ const CreateEmployeeForm = () => {
         return sanitizedTextInput
     }
 
+    /**
+     * Handles form submission, validates input, and dispatches employee data.
+     * @param {Event} e - The form submit event 
+     */
     const saveEmployee = (e) => {
         e.preventDefault()
         
@@ -65,13 +78,10 @@ const CreateEmployeeForm = () => {
         
         const validatedForm = requiredFields.every(field => field.trim().length !== 0)
 
-        if (validatedForm) {
-            console.log("Tout est ok !")
-            console.log(sanitizedFirstName)
-            
+        if (validatedForm) {            
             setError(null)
             
-            // envoi des données dans le store
+            // sending data to the store
             dispatch(setEmployee({
                 firstName : sanitizedFirstName,
                 lastName : sanitizedLastName,
@@ -90,8 +100,6 @@ const CreateEmployeeForm = () => {
             setError("Please complete all fields.")
         }
     }
-
-    
 
     return (
         <div>
@@ -166,32 +174,11 @@ const CreateEmployeeForm = () => {
                         </select>
                 </div>
 
-                <button
-                    type="submit"
-                    // type="button"
-                    // onClick={toogleDialog}
-                >
-                    Save
-                </button>
+                <button className="save-button" type="submit">Save</button>
 
             </form>
 
-            {/* MODAL */}
-            <dialog
-                id="confirmation"
-                className="modal"
-                ref={dialogRef}
-                onClick={(e) => {
-                    if(e.currentTarget === e.target) {
-                        toogleDialog()
-                    }
-                }}
-            >
-                <div className="modal-content">
-                    <button onClick={toogleDialog}>Close</button>
-                    <p>Employee Created!</p>
-                </div>
-            </dialog>
+            <Dialog toogleDialog={toogleDialog} ref={dialogRef} />
     </div>
     )
 }
