@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { states } from "../../data/states";
 import { setEmployee } from "./employeesSlice";
@@ -18,6 +18,19 @@ const CreateEmployeeForm = () => {
     const [zipCode, setZipCode] = useState('')
 
     const [error, setError] = useState(null)
+
+
+    const dialogRef = useRef(null)
+    const toogleDialog = () => {
+        if(!dialogRef.current) {
+            return
+        }
+
+        dialogRef.current.hasAttribute("open")
+            ? dialogRef.current.close()
+            : dialogRef.current.showModal()
+    }
+
 
     /**
      * Sanitizes input to remove potentially malicious HTML characters
@@ -71,93 +84,115 @@ const CreateEmployeeForm = () => {
                 zipCode : sanitizedZipCode
             }))
 
+            toogleDialog()
+
         } else {
             setError("Please complete all fields.")
         }
     }
 
+    
+
     return (
-        <form onSubmit={saveEmployee} id="create-employee">
-        
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div>
+            <form onSubmit={saveEmployee} id="create-employee">
+            
+                {error && <p style={{ color: 'red' }}>{error}</p>}
 
-            <div>
+                <div>
+                    <label htmlFor="first-name">First Name</label>
+                    <input type="text" id="first-name" required
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)} />
 
-                <label htmlFor="first-name">First Name</label>
-                <input type="text" id="first-name" required
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)} />
+                    <label htmlFor="last-name">Last Name</label>
+                    <input type="text" id="last-name" required
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)} />
 
-                <label htmlFor="last-name">Last Name</label>
-                <input type="text" id="last-name" required
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)} />
+                    <label htmlFor="date-of-birth">Date of Birth</label>
+                    <input id="date-of-birth" type="date" required
+                        value={dateOfBirth}
+                        onChange={(e) => setDateOfBirth(e.target.value)} />
 
-                <label htmlFor="date-of-birth">Date of Birth</label>
-                <input id="date-of-birth" type="date" required
-                    value={dateOfBirth}
-                    onChange={(e) => setDateOfBirth(e.target.value)} />
+                    <label htmlFor="start-date">Start Date</label>
+                    <input id="start-date" type="date" required
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)} />
 
-                <label htmlFor="start-date">Start Date</label>
-                <input id="start-date" type="date" required
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)} />
+                    <fieldset className="address">
+                        <legend>Address</legend>
 
-                <fieldset className="address">
-                    <legend>Address</legend>
+                        <label htmlFor="street">Street</label>
+                        <input id="street" type="text" required
+                            value={street}
+                            onChange={(e) => setStreet(e.target.value)} />
 
-                    <label htmlFor="street">Street</label>
-                    <input id="street" type="text" required
-                        value={street}
-                        onChange={(e) => setStreet(e.target.value)} />
+                        <label htmlFor="city">City</label>
+                        <input id="city" type="text" required
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)} />
 
-                    <label htmlFor="city">City</label>
-                    <input id="city" type="text" required
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)} />
+                        <label htmlFor="state">State</label>
+                            <select name="state" id="state"
+                                value={liveInState}
+                                onChange={(e) => setLiveInState(e.target.value)} >
+                                {states.map(state => (
+                                    <option
+                                        key={state.abbreviation}
+                                        value={state.abbreviation}
+                                    >
+                                        {state.name}
+                                    </option>
+                                ))}
+                            </select>
+                            
 
-                    <label htmlFor="state">State</label>
-                        <select name="state" id="state"
-                            value={liveInState}
-                            onChange={(e) => setLiveInState(e.target.value)} >
-                            {states.map(state => (
-                                <option
-                                    key={state.abbreviation}
-                                    value={state.abbreviation}
-                                >
-                                    {state.name}
-                                </option>
-                            ))}
+                        <label htmlFor="zip-code">Zip Code</label>
+                        <input id="zip-code" type="number" required
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)} />
+                    </fieldset>
+
+                    <label htmlFor="department">Department</label>
+                        <select name="department" id="department"
+                            value={department}
+                            onChange={(e) => setDepartment(e.target.value)} >
+                                <option value="Sales">Sales</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Human Resources">Human Resources</option>
+                                <option value="Legal">Legal</option>
                         </select>
-                        
+                </div>
 
-                    <label htmlFor="zip-code">Zip Code</label>
-                    <input id="zip-code" type="number" required
-                        value={zipCode}
-                        onChange={(e) => setZipCode(e.target.value)} />
-                </fieldset>
+                <button
+                    type="submit"
+                    // type="button"
+                    // onClick={toogleDialog}
+                >
+                    Save
+                </button>
 
-                <label htmlFor="department">Department</label>
-                    <select name="department" id="department"
-                        value={department}
-                        onChange={(e) => setDepartment(e.target.value)} >
-                            <option value="Sales">Sales</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Engineering">Engineering</option>
-                            <option value="Human Resources">Human Resources</option>
-                            <option value="Legal">Legal</option>
-                    </select>
-            </div>
+            </form>
 
-            <button type="submit">Save</button>
-
-            {/* <div id="confirmation" className="modal">Employee Created!</div> */}
-            {!error &&
-                <dialog open id="confirmation" className="modal">
-                    <button>Fermer</button>
+            {/* MODAL */}
+            <dialog
+                id="confirmation"
+                className="modal"
+                ref={dialogRef}
+                onClick={(e) => {
+                    if(e.currentTarget === e.target) {
+                        toogleDialog()
+                    }
+                }}
+            >
+                <div className="modal-content">
+                    <button onClick={toogleDialog}>Close</button>
                     <p>Employee Created!</p>
-                </dialog>}
-        </form>
+                </div>
+            </dialog>
+    </div>
     )
 }
 

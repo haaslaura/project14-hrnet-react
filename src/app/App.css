@@ -62,10 +62,22 @@ button {
 /* MODAL */
 
 .modal {
-  border-radius: 15px;
+  border-radius: 8px;
+  border: 0px;
+  box-shadow: 0 0 10px #000;
+  text-align: left;
+  /* padding: 15px 30px; */
+  padding: 0;
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-content {
+  padding: 15px;
 }
 
 ::backdrop {
-  background: darkblue;
-  opacity: 0.75;
+  background: #000;
+  opacity: 0.8;
 }
