@@ -29,20 +29,40 @@ h3, h4, h5, p, a, ul, li, form, input, fieldset, select, option, button {
   line-height: 1.43;
 }
 
-/* ELEMENTS */
+/* FORM ELEMENTS */
 
-.save-button {
-  margin-top: 1rem;
+#create-employee {
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px -1px;
+  padding: 10px;
 }
 
-label {
+#create-employee .save-button {
+  margin-top: 1rem;
+  padding: 8px 15px;
+}
+
+#create-employee label {
   display: block;
   margin-top: 1rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+#create-employee input {
+  width: 97%;
+  height: 25px;
+  border: 1px solid #0000003d;
+  border-radius: 3px;
+}
+
+#create-employee select {
+  height: 32px;
+  border: 1px solid #0000003d;
 }
 
 .address {
   margin-top: 10px;
+  border: 1px solid #0000003d;
 }
 
 section {
@@ -51,3 +71,6 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+
+
