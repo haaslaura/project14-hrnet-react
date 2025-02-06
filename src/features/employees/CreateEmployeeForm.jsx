@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid"; // for create an employee unique ID
 
 /**
  * Component for creating a new employee form.
- * Manages form state, validation, and submission to the Redux store.
+ * Manages form state, validation, and submission to the Redux store
  * @returns {JSX.Element} - The form for created a new employee
  */
 const CreateEmployeeForm = () => {   
@@ -76,8 +76,6 @@ const CreateEmployeeForm = () => {
             liveInState,
             sanitizedZipCode
         }
-
-        console.log(newEmployee);
         
         const validatedForm = Object.values(newEmployee).every(field => field.trim().length !== 0)
 
