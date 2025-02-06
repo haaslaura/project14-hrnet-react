@@ -1,17 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import employeesReducer  from '../features/employees/employeesSlice'
-
-import storage from "redux-persist/lib/storage"; // Utilisation du localStorage
+import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist"
 import { combineReducers } from "redux"
 
 
 const persistConfig = {
   key: "root",
-  storage, // Permet de stocker les données dans le localStorage
+  storage, // Used to store data in the localStorage
 }
 
-// Au cas où plusieurs Slices
+// Anticipates the presence of several Slices
 const rootReducer = combineReducers({
   employees: employeesReducer,
 })
@@ -23,7 +22,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoreActions: ["persist/PERSIST", "persist/REHYDRATE"], // ✅ Ignore Redux Persist
+        ignoreActions: ["persist/PERSIST", "persist/REHYDRATE"], // Ignore Redux Persist
       }
     })
 })
