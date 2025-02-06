@@ -55,7 +55,7 @@ const CreateEmployeeForm = () => {
      * Handles form submission, validates input, and dispatches employee data.
      * @param {Event} e - The form submit event 
      */
-    const saveEmployee = (e) => {
+    const saveEmployee = async (e) => {
         e.preventDefault()
 
         const sanitizedFirstName = validateTextInput(firstName)
@@ -81,12 +81,20 @@ const CreateEmployeeForm = () => {
         
         const validatedForm = Object.values(newEmployee).every(field => field.trim().length !== 0)
 
-        if (validatedForm) {            
-            setError(null)
-            // sending data to the store
-            dispatch(setEmployee(newEmployee));
-            toogleDialog()
+        if (validatedForm) {
+            try {
+                // Simulation of an API request (to be replaced by a real fetch later)
+                await new Promise(resolve => setTimeout(resolve, 500))
 
+                setError(null)
+                // sending data to the store
+                dispatch(setEmployee(newEmployee))
+                // opening of the modal
+                toogleDialog()
+
+            } catch (err) {
+                console.error("Error when adding employee :", err)
+            }
         } else {
             setError("Please complete all fields.")
         }
