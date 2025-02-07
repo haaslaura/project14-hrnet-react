@@ -40,6 +40,20 @@ const CurrentEmployeesArray = () => {
             console.error("Deletion error :", err)
         }
     }
+
+    /**
+     * Return a Date with the format dd/mm/yyyy
+     * @param {string} value - The date in a string format
+     * @returns {string} - The new date format
+     */
+    const dateConstructor = (value) => {
+        const date = new Date(value)
+        const day = String(date.getDate()).padStart(2,"0")
+        const month = String(date.getMonth()+1).padStart(2,"0")
+        const year = date.getFullYear()
+        let currentDate = `${day}/${month}/${year}`
+        return currentDate
+    }
     
     /**
      * Defining columns for the employee table.
@@ -62,8 +76,7 @@ const CurrentEmployeesArray = () => {
             field: 'startDate',
             headerName: 'Start Date',
             flex: 0.9,
-            type: 'date',
-            valueGetter: (value) => value && new Date(value),
+            valueGetter: (value) => value && dateConstructor(value),
             resizable: false
         },
         {
@@ -76,8 +89,7 @@ const CurrentEmployeesArray = () => {
             field: 'dateOfBirth',
             headerName: 'Date of Birth',
             flex: 0.9,
-            type: 'date',
-            valueGetter: (value) => value && new Date(value),
+            valueGetter: (value) => value && dateConstructor(value),
             resizable: false
         },
         {
