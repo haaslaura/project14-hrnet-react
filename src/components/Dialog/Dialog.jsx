@@ -5,8 +5,18 @@ import './dialog.css'
 
 
 /**
- * Dialog component for displaying a modal window.
+ * Dialog component for displaying a modal window following completion of a form.
  * This component uses `forwardRef` to allow parent components to control its visibility.
+ * In your form component, add the following code:
+    //  const dialogRef = useRef(null)
+    //  const toogleDialog = () => {
+    //      if(!dialogRef.current) {
+    //          return
+    //      }
+    //      dialogRef.current.hasAttribute("open")
+    //          ? dialogRef.current.close()
+    //          : dialogRef.current.showModal()
+    //  }
  *
  * @param {Object} props - Component props
  * @param {Function} props.toogleDialog - Function to toggle the modal visibility
