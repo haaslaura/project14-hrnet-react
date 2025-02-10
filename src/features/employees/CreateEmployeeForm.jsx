@@ -27,10 +27,10 @@ const CreateEmployeeForm = () => {
     const [error, setError] = useState(null)
     
     /**
-     * Toogles the dialog modal open or closed
+     * Toggles the dialog modal open or closed
      */
     const dialogRef = useRef(null)
-    const toogleDialog = () => {
+    const toggleDialog= () => {
         if(!dialogRef.current) {
             return
         }
@@ -88,7 +88,7 @@ const CreateEmployeeForm = () => {
                 // sending data to the store
                 dispatch(setEmployee(newEmployee))
                 // opening of the modal
-                toogleDialog()
+                toggleDialog()
 
             } catch (err) {
                 console.error("Error when adding employee :", err)
@@ -175,7 +175,7 @@ const CreateEmployeeForm = () => {
 
             </form>
 
-            <Dialog toogleDialog={toogleDialog} ref={dialogRef} />
+            <Dialog toggleDialog={toggleDialog} ref={dialogRef} />
     </div>
     )
 }
