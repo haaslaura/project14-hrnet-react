@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import CurrentEmployeesArray from "../components/CurrentEmployeesArray"
+import CurrentEmployeesArray from "../components/CurrentEmployeesArray/CurrentEmployeesArray"
 
 const VueCurrentEmployees = () => {
     return (
@@ -8,7 +8,7 @@ const VueCurrentEmployees = () => {
            <br />
            <CurrentEmployeesArray />
            <br />
-           <Link to="/">Home</Link>
+           <Link to="/" data-testid="home-link">Home</Link>
        </section>
     )
 }

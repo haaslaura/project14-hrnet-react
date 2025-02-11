@@ -9,10 +9,9 @@ export const employeesSlice = createSlice({
   initialState,
   reducers: {
     setEmployee: (state, action) => {
-      state.employees.push(action.payload); // Ajoute un employé sans écraser les anciens
+      state.employees.push(action.payload);
     },
     clearEmployee: (state, action) => {
-        // state.employees.filter((employee) => employee.id != action.payload)
         state.employees = state.employees.filter(emp => emp.id !== action.payload);
     },
   },

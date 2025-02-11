@@ -1,5 +1,4 @@
 import { forwardRef } from "react"
-import PropTypes from "prop-types"
 import ModalContent from "./ModalContent"
 import './dialog.css'
 
@@ -19,6 +18,7 @@ const Dialog = forwardRef(({ toggleDialog}, ref ) => {
             <dialog
                 id="confirmation"
                 className="modal"
+                data-testid="confirmation-dialog"
                 ref={ref}
                 onClick={(e) => {
                     if(e.currentTarget === e.target) {
@@ -33,9 +33,5 @@ const Dialog = forwardRef(({ toggleDialog}, ref ) => {
             </dialog>
     )
 })
-
-Dialog.propTypes = {
-    toggleDialog: PropTypes.func.isRequired,
-}
 
 export default Dialog

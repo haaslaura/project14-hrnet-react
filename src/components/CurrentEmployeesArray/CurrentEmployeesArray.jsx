@@ -1,7 +1,7 @@
 import Paper from '@mui/material/Paper'
 import { DataGrid, GridActionsCellItem, GridDeleteIcon, GridToolbarQuickFilter } from '@mui/x-data-grid'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearEmployee } from '../features/employees/employeesSlice'
+import { clearEmployee } from '../../features/employees/employeesSlice'
 
 
 /**
