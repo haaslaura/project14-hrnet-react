@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+src/components/Dialog/package-lock.json
+src/components/Dialog/package.json
+src/components/Dialog/README.md

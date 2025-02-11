@@ -171,7 +171,13 @@ const CreateEmployeeForm = () => {
                         </select>
                 </div>
 
-                <button className="save-button" type="submit">Save</button>
+                <button
+                    className="save-button"
+                    type="submit"
+                    data-testid="save-button"
+                >
+                    Save
+                </button>
 
             </form>
 
