@@ -181,7 +181,11 @@ const CreateEmployeeForm = () => {
 
             </form>
 
-            <Dialog toggleDialog={toggleDialog} ref={dialogRef} />
+            <Dialog
+                toggleDialog={toggleDialog}
+                ref={dialogRef}
+                textModal="Employee Created!"
+                />
     </div>
     )
 }

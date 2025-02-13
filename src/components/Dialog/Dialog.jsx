@@ -1,5 +1,4 @@
 import { forwardRef } from "react"
-import ModalContent from "./ModalContent"
 import './dialog.css'
 
 
@@ -9,10 +8,11 @@ import './dialog.css'
  *
  * @param {Object} props - Component props
  * @param {Function} props.toggleDialog- Function to toggle the modal visibility
+ * @param {string} props.textModal - The text content of the modal
  * @param {React.Ref} ref - Reference to the dialog element
  * @returns {JSX.Element} - The modal component
  */
-const Dialog = forwardRef(({ toggleDialog}, ref ) => {
+const Dialog = forwardRef(({ toggleDialog, textModal }, ref ) => {
 
     return (
             <dialog
@@ -26,10 +26,10 @@ const Dialog = forwardRef(({ toggleDialog}, ref ) => {
                     }
                 }}
             >
-                <button type="button" className="modal-close-button" onClick={toggleDialog} aria-label="Close">
+                <button type="button" className="modal-close-button" data-testid="modal-close-btn" onClick={toggleDialog} aria-label="Close">
                     <span>Close</span>
                 </button>
-                <ModalContent />
+                <p className="modal-content">{textModal}</p>
             </dialog>
     )
 })
