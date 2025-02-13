@@ -5,38 +5,38 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 
-import { clearEmployee } from "../features/employees/employeesSlice";
-import VueCurrentEmployees from "./VueCurrentEmployees";
+import { setEmployee } from "../../features/employees/employeesSlice";
 import Home from "./Home";
+import VueCurrentEmployees from "../CurrentEmployees/VueCurrentEmployees";
 
 
 // Creating a mocked-up store
-const store = configureStore({ reducer: { employees: clearEmployee }})
+const store = configureStore({ reducer: { employees: setEmployee }})
 
 
-test ('Display the current employee page', () => {
+test ('Display the home page', () => {
 
     render(
         <Provider store={store}>
             <MemoryRouter>
-                <VueCurrentEmployees />
+                <Home />
             </MemoryRouter>
         </Provider>
     )
 
-    const title = screen.getByText("Current Employees");
-    const homeLink = screen.getByTestId("home-link");
+    const link = screen.getByTestId("list-link");
+    const title = screen.getByText("Create Employee");
 
+    expect(link).toBeInTheDocument();
     expect(title).toBeInTheDocument();
-    expect(homeLink).toBeInTheDocument();   
-})
+});
 
 
-test("Clicking on the link to the Home page", () => {
-    
+test("Clicking on the link to the Employee List page", () => {
+
     render(
         <Provider store={store}>
-            <MemoryRouter initialEntries={["/employee-list"]}> 
+            <MemoryRouter initialEntries={["/"]}> 
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/employee-list" element={<VueCurrentEmployees />} />
@@ -45,8 +45,8 @@ test("Clicking on the link to the Home page", () => {
         </Provider>
     );
   
-    const homeLink = screen.getByTestId("home-link");
-    fireEvent.click(homeLink);
+    const link = screen.getByTestId("list-link");
+    fireEvent.click(link);
   
-    expect(screen.getByText("Create Employee")).toBeInTheDocument();
+    expect(screen.getByText("Current Employees")).toBeInTheDocument();
   });

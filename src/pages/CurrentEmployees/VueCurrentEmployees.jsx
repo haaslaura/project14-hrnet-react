@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import CurrentEmployeesArray from "../components/CurrentEmployeesArray/CurrentEmployeesArray"
+import CurrentEmployeesArray from "../../components/CurrentEmployeesArray/CurrentEmployeesArray"
 
 const VueCurrentEmployees = () => {
     return (
