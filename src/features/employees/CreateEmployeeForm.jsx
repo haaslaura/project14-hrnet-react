@@ -37,7 +37,7 @@ const CreateEmployeeForm = () => {
 
         dialogRef.current.hasAttribute("open")
             ? dialogRef.current.close()
-            : dialogRef.current.showModal()
+            : dialogRef.current.showModal();
     }
 
 
@@ -78,18 +78,16 @@ const CreateEmployeeForm = () => {
         }
         
         const validatedForm = Object.values(newEmployee).every(field => field.trim().length !== 0)
-
         if (validatedForm) {
             try {
                 // Simulation of an API request (to be replaced by a real fetch later)
                 await new Promise(resolve => setTimeout(resolve, 500))
-
+                
                 setError(null)
                 // sending data to the store
                 dispatch(setEmployee(newEmployee))
                 // opening of the modal
                 toggleDialog()
-
             } catch (err) {
                 console.error("Error when adding employee :", err)
             }
@@ -181,11 +179,11 @@ const CreateEmployeeForm = () => {
 
             </form>
 
-            <Dialog
-                toggleDialog={toggleDialog}
-                ref={dialogRef}
-                textModal="Employee Created!"
-                />
+<Dialog
+    toggleDialog={toggleDialog}
+    ref={dialogRef}
+    textModal="Employee Created!"
+/>
     </div>
     )
 }

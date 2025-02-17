@@ -125,6 +125,7 @@ const CurrentEmployeesArray = () => {
                 <GridActionsCellItem
                     icon={<GridDeleteIcon />}
                     label="Delete"
+                    data-testid="delete-button"
                     onClick={() => deleteUser(params.id)}
                 />
             ],
@@ -141,6 +142,7 @@ const CurrentEmployeesArray = () => {
                 disableRowSelectionOnClick // Prevents line selection
                 disableColumnFilter // Deactivates the column filter function
                 slots={{ toolbar: QuickSearchToolbar }} // Quick filter activation
+                data-testid="data-table"
             />
         </Paper>
     )

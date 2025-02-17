@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 
 import { clearEmployee } from "../../features/employees/employeesSlice";
 import VueCurrentEmployees from "./VueCurrentEmployees";
-import Home from "./Home";
+import Home from "../Home/Home";
 
 
 // Creating a mocked-up store
