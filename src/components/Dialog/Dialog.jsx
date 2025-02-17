@@ -15,22 +15,22 @@ import './dialog.css'
 const Dialog = forwardRef(({ toggleDialog, textModal }, ref ) => {
 
     return (
-            <dialog
-                id="confirmation"
-                className="modal"
-                data-testid="confirmation-dialog"
-                ref={ref}
-                onClick={(e) => {
-                    if(e.currentTarget === e.target) {
-                        toggleDialog()
-                    }
-                }}
-            >
-                <button type="button" className="modal-close-button" data-testid="modal-close-btn" onClick={toggleDialog} aria-label="Close">
-                    <span>Close</span>
-                </button>
-                <p className="modal-content">{textModal}</p>
-            </dialog>
+        <dialog
+            id="confirmation"
+            className="hl-modal"
+            data-testid="confirmation-dialog"
+            ref={ref}
+            onClick={(e) => {
+                if(e.currentTarget === e.target) {
+                    toggleDialog()
+                }
+            }}
+        >
+            <button type="button" className="hl-modal-close-button" data-testid="modal-close-btn" onClick={toggleDialog} aria-label="Close">
+                <span>Close</span>
+            </button>
+            <p className="hl-modal-content">{textModal}</p>
+        </dialog>
     )
 })
 

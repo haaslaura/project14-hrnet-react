@@ -1,4 +1,4 @@
-.modal {
+.hl-modal {
     border-radius: 8px;
     border: 0px;
     box-shadow: 0 0 10px #000;
@@ -14,13 +14,13 @@
     opacity: 0.6;
 }
 
-.modal-content { /* text inside the modal*/
+.hl-modal-content { /* text inside the modal*/
     padding: 15px 30px;
     position: relative;
     z-index: 98;
 }
 
-.modal-close-button {
+.hl-modal-close-button {
     position: absolute;
     top: -14px;
     right: -14px;
@@ -34,17 +34,17 @@
     z-index: 99;
 }
 
-.modal-close-button:hover {
+.hl-modal-close-button:hover {
     background-color: #333;
 }
 
-.modal-close-button::before {
+.hl-modal-close-button::before {
     content: "×";
     font-size: 20px;
     font-weight: bold;
 }
 
-.modal-close-button span {
+.hl-modal-close-button span {
     position: absolute;
     width: 1px;
     height: 1px;
